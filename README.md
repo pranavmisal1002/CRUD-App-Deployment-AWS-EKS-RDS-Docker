@@ -34,17 +34,17 @@ This project demonstrates **containerization with Docker**, **Kubernetes orchest
 - ✔ Kubernetes pod and service configurations
 - ✔ Complete production-ready DevOps workflow
 
-## 🟢 PHASE 1: Database Setup (Amazon RDS – MariaDB)
+## 🟢  1: Database Setup (Amazon RDS – MariaDB)
 
 📘 Follow the complete database setup guide (**Step 1 to Step 6**) here:  
 👉 [Database Setup Documentation](https://github.com/pranavmisal1002/EasyCrud-Docker#-phase-1-database-setup-amazon-rds--mariadb)
 
-## 🟢 PHASE 2: Create AWS EKS Cluster
+## 🟢  2: Create AWS EKS Cluster
 
 📘 Follow the complete AWS EKS cluster setup guide here:  
 👉 [AWS EKS Setup Documentation](https://github.com/pranavmisal1002/AWS-EKS-Setup)
 
-## 🔵 Backend Deployment Steps (Docker + DockerHub + EKS)
+## 🔵 3 Backend Deployment Steps (Docker + DockerHub + EKS)
 
 ## Step 1: Install Docker
 
@@ -183,9 +183,12 @@ kubectl get nodes
 Create a Kubernetes manifest file for the backend pod and Service:
 
 ```bash
-nano deployment.yml
+nano backend-deployment.yml
 ```
-### 📄 Backend Deployment & Service Manifest (`deployment.yml`)
+
+> ✅ **Note:** Please update the image name in both `frontend-deployment.yml` and `backend-deployment.yml` according to your Docker image name and tag.
+
+### 📄 Backend Deployment & Service Manifest (`backend-deployment.yml`)
 
 ```yaml
 apiVersion: apps/v1
@@ -228,7 +231,7 @@ spec:
 Create the backend pod and service:
 
 ```bash
-kubectl apply -f deployment.yml
+kubectl apply -f backend-deployment.yml
 ```
 Verify that the pod is running:
 ```bash
@@ -251,7 +254,7 @@ http://<LOADBALANCER_EXTERNAL_IP>:8080
 ```
 🎉 Backend pod setup on EKS is complete!
 
-## 🟣 Frontend Deployment Steps (Docker + DockerHub + EKS)
+## 4 Frontend Deployment Steps (Docker + DockerHub + EKS)
 
 ### Step 1: Navigate to Frontend Directory
 
@@ -353,6 +356,9 @@ Create a Kubernetes manifest file for the frontend deployment and service:
 ```bash
 nano frontend-deployment.yml
 ```
+
+> ✅ **Note:** Please update the image name in both `frontend-deployment.yml` and `backend-deployment.yml` according to your Docker image name and tag.
+
 ### 📄 Frontend Deployment & Service Manifest (`frontend-deployment.yml`)
 
 ```yaml
