@@ -33,13 +33,15 @@ This project demonstrates **containerization with Docker**, **Kubernetes orchest
 📘 Follow the complete database setup guide (**Step 1 to Step 6**) here:  
 👉 [Database Setup Documentation](https://github.com/pranavmisal1002/EasyCrud-Docker#-phase-1-database-setup-amazon-rds--mariadb)
 
----
+## ------------------------
+
 ## 🟢  2: Create AWS EKS Cluster
 
 📘 Follow the complete AWS EKS cluster setup guide here:  
 👉 [AWS EKS Setup Documentation](https://github.com/pranavmisal1002/AWS-EKS-Setup)
 
----
+## ------------------------
+
 ## 🔵 3 Backend Deployment Steps (Docker + DockerHub + EKS)
 
 ## Step 1: Install Docker
@@ -164,7 +166,7 @@ docker push pranavmisal1002/backend:v1
 ```
 ✅ Backend image is now available for deployment on EKS.
 
-## ------------------------
+---
 
 ## ✅ Deploy Backend on EKS Kubernetes Cluster
 ### Step 8: Login to EKS Master / Bastion Node
@@ -252,7 +254,7 @@ http://<LOADBALANCER_EXTERNAL_IP>:8080
 ```
 🎉 Backend pod setup on EKS is complete!
 
----
+## ------------------------
 
 ## 🔵 4 Frontend Deployment Steps (Docker + DockerHub + EKS)
 
@@ -338,6 +340,7 @@ docker push pranavmisal1002/frontend:v1
 ```
 ✅ Frontend image is now available for deployment on EKS.
 
+---
 ##  Deploy Frontend on EKS (Kubernetes)
 
 ### Step 7: Login to EKS Master / Bastion Node
@@ -426,7 +429,7 @@ http://<FRONTEND_LOADBALANCER_DNS>
 ```
 🎉 Your EasyCRUD application is now live on Kubernetes (AWS EKS)! ✅
 
----
+## ------------------------
 
 
 ## 📖 Project Overview
