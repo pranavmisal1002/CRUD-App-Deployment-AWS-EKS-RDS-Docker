@@ -185,7 +185,7 @@ Create a Kubernetes manifest file for the backend pod and Service:
 ```bash
 nano deployment.yml
 ```
-### 📄 Backend Deployment & Service Manifest (`pod.yml`)
+### 📄 Backend Deployment & Service Manifest (`deployment.yml`)
 
 ```yaml
 apiVersion: apps/v1
@@ -250,3 +250,87 @@ Once the EXTERNAL-IP is available, open in your browser:
 http://<LOADBALANCER_EXTERNAL_IP>:8080
 ```
 🎉 Backend pod setup on EKS is complete!
+
+## 🟣 Frontend Deployment Steps (Docker + DockerHub + EKS)
+
+### Step 1: Navigate to Frontend Directory
+
+Go to the frontend project directory:
+
+```bash
+cd EasyCRUD/frontend/
+```
+Check hidden files such as .env:
+```bash
+ls -a
+```
+### Step 2: Edit `.env` File (Add Backend LoadBalancer URL)
+
+Edit the frontend environment configuration file:
+
+```bash
+nano .env
+```
+Add the following backend API endpoint in the `.env` file:
+
+```env
+# Backend API LoadBalancer URL
+REACT_APP_BACKEND_URL=http://<BACKEND_LOADBALANCER_DNS>:8080
+```
+## Step 3: Create Frontend Dockerfile
+
+Create a Dockerfile for the frontend application.
+
+```bash
+nano Dockerfile
+```
+Add the following content to the Dockerfile:
+```bash
+FROM node:25-alpine
+COPY . /opt/
+WORKDIR /opt
+RUN npm install
+RUN npm run build
+RUN apk update && apk add apache2
+RUN cp -rf dist/* /var/www/localhost/htdocs/
+EXPOSE 80
+CMD ["httpd","-D","FOREGROUND"]
+```
+### Step 4: Build Frontend Docker Image
+
+Build the frontend Docker image with Docker Hub tag:
+
+```bash
+docker build -t pranavmisal1002/frontend:v1 .
+```
+Verify Docker images:
+```bash
+docker images
+```
+### Step 5: Run Frontend Container Locally (Testing)
+
+Run the frontend Docker container on port `80`:
+
+```bash
+docker run -d -p 80:80 pranavmisal1002/frontend:v1
+```
+Check running containers:
+```bash
+docker ps
+```
+✅ Verify frontend in browser:
+```bash
+http://<FRONTEND_EC2_PUBLIC_IP>
+```
+### Step 6: Push Frontend Image to Docker Hub
+
+Login to Docker Hub:
+
+```bash
+docker login
+```
+Push the frontend image to Docker Hub:
+```bash
+docker push pranavmisal1002/frontend:v1
+```
+✅ Frontend image is now available for deployment on EKS.
