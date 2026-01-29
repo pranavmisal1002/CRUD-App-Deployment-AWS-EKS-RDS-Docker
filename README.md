@@ -167,7 +167,7 @@ docker push pranavmisal1002/backend:v1
 ```
 ✅ Backend image is now available for deployment on EKS.
 
----
+#__________________________________________________________________________________________________
 
 ## ✅ Deploy Backend on EKS Kubernetes Cluster
 ### Step 8: Login to EKS Master / Bastion Node
@@ -255,7 +255,7 @@ http://<LOADBALANCER_EXTERNAL_IP>:8080
 ```
 🎉 Backend pod setup on EKS is complete!
 
-## ------------------------
+---
 
 ## 🔵 4 Frontend Deployment Steps (Docker + DockerHub + EKS)
 
@@ -341,7 +341,7 @@ docker push pranavmisal1002/frontend:v1
 ```
 ✅ Frontend image is now available for deployment on EKS.
 
----
+#______________________________________________________________________________________________________
 ##  Deploy Frontend on EKS (Kubernetes)
 
 ### Step 7: Login to EKS Master / Bastion Node
@@ -430,7 +430,7 @@ http://<FRONTEND_LOADBALANCER_DNS>
 ```
 🎉 Your EasyCRUD application is now live on Kubernetes (AWS EKS)! ✅
 
-## ------------------------
+---
 
 
 ## 📖 Project Overview
