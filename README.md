@@ -35,9 +35,6 @@ This project demonstrates **containerization with Docker**, **Kubernetes orchest
 
 ---  
 
-
-
-
 ## 🟢  2: Create AWS EKS Cluster
 
 📘 Follow the complete AWS EKS cluster setup guide here:  
