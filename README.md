@@ -334,3 +334,139 @@ Push the frontend image to Docker Hub:
 docker push pranavmisal1002/frontend:v1
 ```
 ✅ Frontend image is now available for deployment on EKS.
+
+##  Deploy Frontend on EKS (Kubernetes)
+
+### Step 7: Login to EKS Master / Bastion Node
+
+Login to the EC2 instance where `kubectl` is configured (EKS access node).
+
+Verify EKS cluster connectivity:
+
+```bash
+kubectl get nodes
+```
+### Step 8: Create Frontend Deployment and Service YAML
+
+Create a Kubernetes manifest file for the frontend deployment and service:
+
+```bash
+nano frontend-deployment.yml
+```
+### 📄 Frontend Deployment & Service Manifest (`frontend-deployment.yml`)
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      name: frontend-pod
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend-pod
+          image: pranavmisal1002/frontend5:v1
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: forntend-svc
+spec:
+  type: LoadBalancer
+  selector:
+    app: frontend
+  ports:
+    - name: frontend-lb
+      protocol: TCP
+      port: 80
+      targetPort: 80
+```
+### Step 9: Deploy Frontend Pod and Service
+
+Deploy the frontend application on the EKS cluster:
+
+```bash
+kubectl apply -f frontend-deployment.yml
+```
+Verify frontend pod status:
+```bash
+kubectl get pods -o wide
+```
+Verify frontend service creation:
+```bash
+kubectl get svc
+```
+### Step 11: Get LoadBalancer Endpoint and Verify
+
+Retrieve the LoadBalancer external endpoint for the frontend service:
+
+```bash
+kubectl get svc frontend-service
+```
+Copy the LoadBalancer DNS and open in your browser:
+
+```text
+http://<FRONTEND_LOADBALANCER_DNS>
+```
+🎉 Your EasyCRUD application is now live on Kubernetes (AWS EKS)! ✅
+
+
+## 📖 Project Overview
+
+EasyCRUD is a cloud-native student registration system built using a modern DevOps workflow.  
+The application is fully containerized with Docker and deployed on AWS using Kubernetes (EKS), with a managed MariaDB database hosted on Amazon RDS.
+
+This project demonstrates real-world practices such as:
+  
+- Kubernetes orchestration  
+- Cloud infrastructure on AWS  
+- CI-style container workflows  
+- LoadBalancer-based service exposure  
+
+---
+
+
+---
+
+## 🧪 Verification Checklist
+
+- ✅ Backend reachable via EKS LoadBalancer  
+- ✅ Frontend reachable via EKS LoadBalancer  
+- ✅ Database connected via RDS endpoint  
+- ✅ Pods in Running state  
+- ✅ Services exposed properly  
+
+---
+
+## 🛠️ Common Troubleshooting
+
+### Pod not running?
+```bash
+kubectl describe pod <pod-name>
+kubectl logs <pod-name>
+```
+### Service not getting `EXTERNAL-IP`?
+
+Wait for 2–3 minutes (AWS LoadBalancer provisioning takes time), or run:
+
+```bash
+kubectl get svc -w
+```
+Backend not connecting to Amazon RDS?
+
+Check the following:
+
+✔ Security Group inbound rules allow database access
+
+✔ Correct RDS endpoint in application.properties file
+
