@@ -10,14 +10,7 @@ This project demonstrates **containerization with Docker**, **Kubernetes orchest
 - AWS RDS (MariaDB)
 - Kubernetes Services
 - Load Balancer / Ingress
-## 🎯 Key Highlights
 
-- ✅ End-to-end cloud deployment on AWS  
-- ✅ Dockerized frontend and backend services  
-- ✅ Kubernetes orchestration using Amazon EKS  
-- ✅ Secure MariaDB database hosted on Amazon RDS  
-- ✅ Scalable microservices architecture  
-- ✅ Production-style DevOps workflow  
 ## 🛠️ Technologies Used
 
 - **Frontend:** React  
@@ -34,16 +27,19 @@ This project demonstrates **containerization with Docker**, **Kubernetes orchest
 - ✔ Kubernetes pod and service configurations
 - ✔ Complete production-ready DevOps workflow
 
+---
 ## 🟢  1: Database Setup (Amazon RDS – MariaDB)
 
 📘 Follow the complete database setup guide (**Step 1 to Step 6**) here:  
 👉 [Database Setup Documentation](https://github.com/pranavmisal1002/EasyCrud-Docker#-phase-1-database-setup-amazon-rds--mariadb)
 
+---
 ## 🟢  2: Create AWS EKS Cluster
 
 📘 Follow the complete AWS EKS cluster setup guide here:  
 👉 [AWS EKS Setup Documentation](https://github.com/pranavmisal1002/AWS-EKS-Setup)
 
+---
 ## 🔵 3 Backend Deployment Steps (Docker + DockerHub + EKS)
 
 ## Step 1: Install Docker
