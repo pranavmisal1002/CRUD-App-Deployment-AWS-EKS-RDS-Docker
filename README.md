@@ -33,7 +33,7 @@ This project demonstrates **containerization with Docker**, **Kubernetes orchest
 📘 Follow the complete database setup guide (**Step 1 to Step 6**) here:  
 👉 [Database Setup Documentation](https://github.com/pranavmisal1002/EasyCrud-Docker#-phase-1-database-setup-amazon-rds--mariadb)
 
-## ------------------------
+## _____________________________________________________________________________________________________________________
 
 ## 🟢  2: Create AWS EKS Cluster
 
