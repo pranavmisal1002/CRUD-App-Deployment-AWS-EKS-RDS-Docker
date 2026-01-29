@@ -167,3 +167,86 @@ Push the backend image to Docker Hub repository:
 docker push pranavmisal1002/backend:v1
 ```
 ✅ Backend image is now available for deployment on EKS.
+
+## ✅ Deploy Backend on EKS Kubernetes Cluster
+### Step 8: Login to EKS Master / Bastion Node
+
+Login to the EC2 instance where `kubectl` is configured (EKS access node).
+
+Verify EKS cluster connectivity:
+
+```bash
+kubectl get nodes
+```
+### Step 9: Create Backend Pod YAML
+
+Create a Kubernetes manifest file for the backend pod and Service:
+
+```bash
+nano deployment.yml
+```
+### 📄 Backend Deployment & Service Manifest (`pod.yml`)
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      name: backend-pod
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: pranavmisal1002/backend2:v1
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-svc
+spec:
+  type: LoadBalancer
+  selector:
+    app: backend
+  ports:
+    - name: lb
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+```
+### Step 10: Deploy Backend Pod and Service
+
+Create the backend pod and service:
+
+```bash
+kubectl apply -f deployment.yml
+```
+Verify that the pod is running:
+```bash
+kubectl get pods -o wide
+```
+Verify that the service is created:
+```bash
+kubectl get svc
+```
+### Step 11: Verify Backend on EKS
+
+Check the backend service external IP (LoadBalancer):
+
+```bash
+kubectl get svc backend-service
+```
+Once the EXTERNAL-IP is available, open in your browser:
+```bash
+http://<LOADBALANCER_EXTERNAL_IP>:8080
+```
+🎉 Backend pod setup on EKS is complete!
