@@ -250,7 +250,9 @@ http://<LOADBALANCER_EXTERNAL_IP>:8080
 ```
 🎉 Backend pod setup on EKS is complete!
 
-## 4 Frontend Deployment Steps (Docker + DockerHub + EKS)
+---
+
+## 🔵 4 Frontend Deployment Steps (Docker + DockerHub + EKS)
 
 ### Step 1: Navigate to Frontend Directory
 
@@ -421,6 +423,8 @@ Copy the LoadBalancer DNS and open in your browser:
 http://<FRONTEND_LOADBALANCER_DNS>
 ```
 🎉 Your EasyCRUD application is now live on Kubernetes (AWS EKS)! ✅
+
+---
 
 
 ## 📖 Project Overview
