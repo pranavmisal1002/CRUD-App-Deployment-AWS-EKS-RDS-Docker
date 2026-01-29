@@ -128,3 +128,42 @@ Verify Docker images
 ```bash
 docker images
 ```
+### Step 6: Run Backend Container Locally (Testing)
+
+Run the backend Docker container on port `8080`:
+
+```bash
+docker run -d -p 8080:8080 backend:v1
+```
+Check running containers:
+```bash
+docker ps
+```
+✅ Verify backend in browser:
+```bash
+http://<BACKEND_EC2_PUBLIC_IP>:8080
+```
+> ✅ **Note:** Once the Docker image is built, rename (tag) it using the `docker tag` command before pushing it to Docker Hub.
+### Tag the Docker Image for Docker Hub
+**Syntax:**
+
+```bash
+docker tag <LOCAL_IMAGE_NAME>:<TAG> <DOCKERHUB_USERNAME>/<REPOSITORY_NAME>:<TAG>
+```
+**Example:**
+
+```bash
+docker tag backend:v1 pranavmisal1002/backend:v1
+```
+### Step 7: Push Backend Image to Docker Hub
+
+Login to Docker Hub:
+
+```bash
+docker login -u <username>
+```
+Push the backend image to Docker Hub repository:
+```bash
+docker push pranavmisal1002/backend:v1
+```
+✅ Backend image is now available for deployment on EKS.
