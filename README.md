@@ -167,7 +167,7 @@ docker push pranavmisal1002/backend:v1
 ```
 ✅ Backend image is now available for deployment on EKS.
 
-###_______________________________________________________________________________________________________________________
+### _______________________________________________________________________________________________________________________
 
 ## ✅ Deploy Backend on EKS Kubernetes Cluster
 ### Step 8: Login to EKS Master / Bastion Node
@@ -341,7 +341,7 @@ docker push pranavmisal1002/frontend:v1
 ```
 ✅ Frontend image is now available for deployment on EKS.
 
-##___________________________________________________________________________________________________________________________
+### _______________________________________________________________________________________________________________________
 ##  Deploy Frontend on EKS (Kubernetes)
 
 ### Step 7: Login to EKS Master / Bastion Node
