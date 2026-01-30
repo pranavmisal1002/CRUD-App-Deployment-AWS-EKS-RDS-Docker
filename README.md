@@ -59,7 +59,7 @@ sudo systemctl start docker
 Clone the EasyCRUD project repository and navigate to the backend directory.
 
 ```bash
-git clone https://github.com/Rohit-1920/EasyCRUD.git
+git clone https://github.com/Rohit-1920/EasyCRUD-Updated.git
 ```
 Move to backend directory
 ```bash
@@ -167,7 +167,7 @@ docker push pranavmisal1002/backend:v1
 ```
 ✅ Backend image is now available for deployment on EKS.
 
-### _______________________________________________________________________________________________________________________
+### ______________________________________________________________________________________________________
 
 ## ✅ Deploy Backend on EKS Kubernetes Cluster
 ### Step 8: Login to EKS Master / Bastion Node
@@ -341,7 +341,7 @@ docker push pranavmisal1002/frontend:v1
 ```
 ✅ Frontend image is now available for deployment on EKS.
 
-### _______________________________________________________________________________________________________________________
+### _________________________________________________________________________________________________
 ##  Deploy Frontend on EKS (Kubernetes)
 
 ### Step 7: Login to EKS Master / Bastion Node
