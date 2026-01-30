@@ -9,7 +9,7 @@ This project demonstrates **containerization with Docker**, **Kubernetes orchest
 - AWS EKS (Kubernetes)
 - AWS RDS (MariaDB)
 - Kubernetes Services
-- Load Balancer / Ingress
+- Load Balancer 
 
 ## 🛠️ Technologies Used
 
